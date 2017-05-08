@@ -27,6 +27,9 @@ app.get('/widgets/:widget.json', function(req, res) {
       res.json({'error': err});
     } else {
       var reply_json = JSON.parse(reply);
+      if(reply_json === null){
+        return;
+      }
       var next_time = moment(reply_json.next_time);
       delete reply_json.next_time;
       var now = moment();

@@ -7,7 +7,8 @@ const PATHS = {
   dashboards: path.join(__dirname, 'dashboards'),
   build: path.join(__dirname, 'build'),
   widgets: path.join(__dirname, 'widgets'),
-  styles: path.join(__dirname, 'styles')
+  styles: path.join(__dirname, 'styles'),
+  redux: path.join(__dirname, 'redux')
 };
 
 // grab all dashboards
@@ -40,7 +41,7 @@ module.exports = {
         loaders: ['babel?cacheDirectory'],
         // Parse only app files! Without this it will go through entire project.
         // In addition to being slow, that will most likely result in an error.
-        include: [PATHS.dashboards, PATHS.widgets]
+        include: [PATHS.dashboards, PATHS.widgets, PATHS.redux]
       },
       {
         test: /\.scss$/,

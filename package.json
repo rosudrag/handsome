@@ -4,7 +4,8 @@
   "description": "A handsome dashboard framework written in javascript",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node --debug app.js",
+    "babel-start": "babel-node --debug app.js",
     "postinstall": "webpack -p --progress --colors",
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --require ignore-styles --require test/setup.js --recursive",
     "cover": "./node_modules/.bin/nyc --reporter=lcov --extension .jsx npm run test",
@@ -39,7 +40,9 @@
     "packery": "^2.0.0",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
+    "react-redux": "^5.0.4",
     "redis": "^2.6.0-1",
+    "redux": "^3.6.0",
     "request": "^2.71.0",
     "require-all": "^2.0.0",
     "sass-loader": "^3.2.0",
@@ -47,6 +50,7 @@
     "webpack": "^1.12.14"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "chai": "^3.5.0",
     "coveralls": "^2.11.9",
     "enzyme": "^2.3.0",
