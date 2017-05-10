@@ -8,7 +8,8 @@ const PATHS = {
   build: path.join(__dirname, 'build'),
   widgets: path.join(__dirname, 'widgets'),
   styles: path.join(__dirname, 'styles'),
-  redux: path.join(__dirname, 'redux')
+  redux: path.join(__dirname, 'redux'),
+  jobs: path.join(__dirname, 'jobs')
 };
 
 // grab all dashboards
@@ -18,6 +19,7 @@ var entry_paths = fs.readdirSync(PATHS.dashboards).reduce(function(map, filename
 }, {});
 
 module.exports = {
+  devtool: 'source-map',
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
@@ -41,7 +43,7 @@ module.exports = {
         loaders: ['babel?cacheDirectory'],
         // Parse only app files! Without this it will go through entire project.
         // In addition to being slow, that will most likely result in an error.
-        include: [PATHS.dashboards, PATHS.widgets, PATHS.redux]
+        include: [PATHS.dashboards, PATHS.widgets, PATHS.redux, PATHS.jobs]
       },
       {
         test: /\.scss$/,

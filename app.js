@@ -8,6 +8,8 @@ var redis = config.getRedisClient();
 
 const path = require('path');
 
+import jobs from './jobs';
+
 app.engine('hbs', exphbs({defaultLayout: 'index', extname: '.hbs', layoutsDir: 'views/'}));
 app.set('view engine', 'hbs');
 
@@ -64,4 +66,5 @@ if(process.env.NODE_ENV === 'production') {
  }
 
 // load our jobs
-require(__dirname + '/jobs.js');
+// require(__dirname + '/jobs.js');
+jobs();

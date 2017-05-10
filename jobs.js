@@ -39,7 +39,10 @@ function start_recurring_job(job) {
     );
 }
 
-for (var job in jobs) {
-  console.log("Starting job: " + job)
-  start_recurring_job(jobs[job]);
+export default () => {
+  for (var job in jobs) {
+    console.log("Starting job: " + job)
+    start_recurring_job(jobs[job]);
+  }
 }
+

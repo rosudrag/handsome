@@ -1,4 +1,4 @@
-import { dashboardWigetsReducer } from './dashboardWidgetsReducer';
+import { dashboardWidgetsReducer } from './dashboardWidgetsReducer';
 
 const initialState = {
 };

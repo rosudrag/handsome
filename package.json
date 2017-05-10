@@ -4,8 +4,8 @@
   "description": "A handsome dashboard framework written in javascript",
   "main": "app.js",
   "scripts": {
-    "start": "node --debug app.js",
-    "babel-start": "babel-node --debug app.js",
+    "start-old": "node --debug app.js",
+    "start": "babel-node --debug app.js --debug",
     "postinstall": "webpack -p --progress --colors",
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --require ignore-styles --require test/setup.js --recursive",
     "cover": "./node_modules/.bin/nyc --reporter=lcov --extension .jsx npm run test",

@@ -6,6 +6,12 @@
     "configurations": [
         {
             "type": "node",
+            "request": "attach",
+            "name": "Attach",
+            "port": 5858
+        },
+        {
+            "type": "node",
             "request": "launch",
             "name": "Launch via NPM",
             "runtimeExecutable": "npm",
@@ -14,15 +20,21 @@
             },
             "runtimeArgs": [
                 "run-script",
-                "start"
+                "babel-start"
             ],
             "port": 5858
         },
         {
+            "name": "Launch with babel",
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceRoot}\\app.js"
+            "program": "${workspaceRoot}/node_modules/babel-cli/bin/babel-node.js",
+            "sourceMaps": true,
+            "stopOnEntry": false,
+            "args": [
+                "${workspaceRoot}/app.js",
+                "--source-maps"
+            ]
         }
     ]
 }
