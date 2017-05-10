@@ -1,27 +1,30 @@
 import request from 'request';
-const url = "http://dev.ao.com/c/heartbeat";
+import configuration from '../configuration.json';
 
-exports.interval = 5000;
-exports.promise = function(fulfill, reject) {
-  request(url, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      const json = JSON.parse(body);
-      const services = json.services;
+class Heartbeat {
+  constructor() {
+    this.interval = 5000;
+  }
 
-      let toFulfill = {};
+  promise (fulfill, reject) {
+    let url = configuration.environments[0].endpoint;
+    request(url, (error, response, body) => {
+      if (!error && response.statusCode == 200) {
+        const json = JSON.parse(body);
+        const services = json.services;
 
-      for(let index = 0; index < services.length; index ++ ){
-        const service = services[index];
-        const serviceName = service.ServiceName;
-        const serviceStatus = service.Status;
-        toFulfill[serviceName] = {text: serviceStatus};
+        let toFulfill = {};
+
+        for(let index = 0; index < services.length; index ++ ){
+          const service = services[index];
+          const serviceName = service.ServiceName;
+          const serviceStatus = service.Status;
+          toFulfill[serviceName] = {status: serviceStatus};
+        }
+        fulfill(toFulfill);
       }
+    });
+  };
+}
 
-      console.log(toFulfill);
-      fulfill(toFulfill);
-      
-    }
-  });
-};
-
-
+export default Heartbeat;

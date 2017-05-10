@@ -1,9 +1,9 @@
-var config = require(__dirname + '/config.js');
-var redis = config.getRedisClient();
+import config from './config';
+import moment from 'moment';
+import Heartbeat from './jobs/heartbeat'; 
 
-var moment = require('moment');
-
-var jobs = require('require-all')(__dirname + '/jobs');
+const redis = config.getRedisClient();
+const jobs = [new Heartbeat()];
 
 function update_widget(name, data, next_time) {
   console.log("updating widget: " + name);
@@ -41,7 +41,6 @@ function start_recurring_job(job) {
 
 export default () => {
   for (var job in jobs) {
-    console.log("Starting job: " + job)
     start_recurring_job(jobs[job]);
   }
 }

@@ -1,0 +1,8 @@
+{
+    "environments": [
+        {
+            "name": "dev",
+            "endpoint": "http://example.com"
+        }
+    ]
+}
