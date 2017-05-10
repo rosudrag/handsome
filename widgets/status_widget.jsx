@@ -2,7 +2,7 @@ import React from 'react';
 import BaseWidget from './widget.jsx';
 
 const failureStyle = {'background-color': 'red'};
-const okStyle = {'background-color': 'blue'};
+const okStyle = {'background-color': 'green'};
 
 export default class StatusWidget extends BaseWidget {
 
